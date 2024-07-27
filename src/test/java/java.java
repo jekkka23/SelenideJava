@@ -1,4 +1,12 @@
+import com.codeborne.selenide.SelenideElement;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class java {
 
@@ -265,3 +273,24 @@ public class Main {
 
 
 }
+
+LocalDate date30DaysAgo = LocalDate.now().minusDays(30);
+DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("d");
+String dayToSelect = date30DaysAgo.format(dayFormatter);
+
+// Перейти к предыдущему месяцу, если необходимо
+        while (true) {
+// Найти элемент даты в календаре
+SelenideElement dayElement = $$(".ui-datepicker-calendar td a")
+        .findBy(text(dayToSelect));
+
+// Если элемент найден и видим, кликнуть по нему
+            if (dayElement.exists() && dayElement.isDisplayed()) {
+        dayElement.click();
+                break;
+                        } else {
+// Кликнуть по кнопке "Предыдущий месяц"
+SelenideElement prevButton = $x("//*[@data-handler='prev']");
+                prevButton.shouldBe(visible, enabled).click();
+            }
+                    }
