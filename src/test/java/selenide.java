@@ -15,16 +15,13 @@ import java.io.FileNotFoundException;
 import java.time.Duration;
 
 import static com.codeborne.selenide.CollectionCondition.*;
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.empty;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Configuration.timeout;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.commands.Util.size;
-import static com.codeborne.selenide.files.DownloadActions.click;
-import static com.codeborne.selenide.impl.Html.text;
 import static jdk.internal.jrtfs.JrtFileAttributeView.AttrID.size;
-import static org.openqa.selenium.bidi.script.LocalValue.setValue;
 
 public class Snippets {
 
